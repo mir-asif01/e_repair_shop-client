@@ -1,10 +1,12 @@
 import { Outlet } from "react-router-dom"
+import Navbar from "../components/shared/Navbar"
+import Footer from "../components/shared/Footer"
 
 function MainLayout() {
     return <>
-        <h1>This main layout</h1>
-        <h1>navigation bar</h1>
+        <Navbar></Navbar>
         <Outlet></Outlet>
+        <Footer></Footer>
     </>
 }
 

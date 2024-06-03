@@ -8,6 +8,7 @@ import All_Orders from "../components/dashboard/All_Orders";
 import All_Users from "../components/dashboard/All_Users";
 import Home from "../components/main/Home";
 import Dashboard_Home from "../components/dashboard/Dashboard_Home";
+import About from "../components/main/About";
 
 
 const routes = createBrowserRouter([
@@ -26,6 +27,10 @@ const routes = createBrowserRouter([
             {
                 path: "/login",
                 element: <Login></Login>
+            },
+            {
+                path: "/about",
+                element: <About></About>
             }
 
         ]
