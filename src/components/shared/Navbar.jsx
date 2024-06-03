@@ -44,6 +44,10 @@ export const Navbar = () => {
                     <NavLink to="/about">About</NavLink>
                     <span className="mt-[2px] h-[3px]  w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
                 </li>
+                <li className="group flex  cursor-pointer flex-col">
+                    <NavLink className="bg-emerald-500 px-2 py-1 rounded-md " to="/dashboard">Dashboard</NavLink>
+                    <span className="mt-[2px] h-[3px]  w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
+                </li>
             </ul>
             <div ref={dropDownMenuRef} onClick={() => setDropDownState(!dropDownState)} className="relative flex transition-transform md:hidden">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="cursor-pointer" > <line x1="4" x2="20" y1="12" y2="12" /> <line x1="4" x2="20" y1="6" y2="6" /><line x1="4" x2="20" y1="18" y2="18" /> </svg>
@@ -60,6 +64,9 @@ export const Navbar = () => {
                         </li>
                         <li className="cursor-pointer  px-6 py-2 text-white hover:bg-sky-600 ">
                             <NavLink to="/about">About</NavLink>
+                        </li>
+                        <li className="cursor-pointer  px-6 py-2 text-white hover:bg-sky-600 ">
+                            <NavLink className="bg-emerald-500 px-2 py-1 rounded-md " to="/dashboard">Dashboard</NavLink>
                         </li>
                     </ul>
                 )}
