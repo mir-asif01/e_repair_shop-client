@@ -7,7 +7,7 @@ function Add_Feedback() {
 
     const { user } = useContext(AuthContext)
     const navigate = useNavigate()
-
+    const token = localStorage.getItem("token")
     const addFeedbackHandler = async (e) => {
         e.preventDefault()
         try {
@@ -25,7 +25,8 @@ function Add_Feedback() {
             await fetch("http://localhost:3000/add-feedback", {
                 method: "POST",
                 headers: {
-                    "content-type": "application/json"
+                    "content-type": "application/json",
+                    authorization: `Bearer ${token}`,
                 },
                 body: JSON.stringify(feedback)
             }).then(res => res.json())

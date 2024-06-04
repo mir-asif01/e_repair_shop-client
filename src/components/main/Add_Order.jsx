@@ -3,6 +3,7 @@ import toast, { Toaster } from 'react-hot-toast'
 import { AuthContext } from '../../context/AuthContext'
 function Add_Order() {
     const { user } = useContext(AuthContext)
+    const token = localStorage.getItem("token")
     const handleAddOrder = async (e) => {
         e.preventDefault()
         try {
@@ -20,7 +21,8 @@ function Add_Order() {
             fetch(`http://localhost:3000/add-order`, {
                 method: "POST",
                 headers: {
-                    "content-type": "application/json"
+                    "content-type": "application/json",
+                    authorization: `Bearer ${token}`,
                 },
                 body: JSON.stringify(order)
             }).then(res => res.json())

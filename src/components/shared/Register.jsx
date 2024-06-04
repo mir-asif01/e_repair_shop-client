@@ -28,6 +28,7 @@ function Register() {
             }).then(res => res.json())
                 .then(res => {
                     toast.success("Registration succesful")
+                    localStorage.setItem("token", res?.token)
                     navigate("/")
                 })
 
@@ -69,6 +70,7 @@ function Register() {
                 .then(res => {
                     toast.success("Registration with email-pass succesful")
                     form.reset()
+                    // localStorage.setItem("token", res?.token)
                     navigate("/")
                 })
 
