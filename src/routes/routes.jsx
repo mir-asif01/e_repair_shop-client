@@ -11,6 +11,7 @@ import Dashboard_Home from "../components/dashboard/Dashboard_Home";
 import Add_Order from "../components/main/Add_Order";
 import Add_Feedback from "../components/main/Add_Feedback";
 import Profile from "../components/main/Profile";
+import PrivateRoute from "./PrivateRoute";
 
 
 const routes = createBrowserRouter([
@@ -32,22 +33,22 @@ const routes = createBrowserRouter([
             },
             {
                 path: "/add-order",
-                element: <Add_Order></Add_Order>
+                element: <PrivateRoute><Add_Order></Add_Order></PrivateRoute>
             },
             {
                 path: "/add-feedback",
-                element: <Add_Feedback></Add_Feedback>
+                element: <PrivateRoute><Add_Feedback></Add_Feedback></PrivateRoute>
             },
             {
                 path: "/profile",
-                element: <Profile></Profile>
+                element: <PrivateRoute><Profile></Profile></PrivateRoute>
             }
 
         ]
     },
     {
         path: "dashboard",
-        element: <DashboardLayout></DashboardLayout>,
+        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
         children: [
             {
                 path: "/dashboard",

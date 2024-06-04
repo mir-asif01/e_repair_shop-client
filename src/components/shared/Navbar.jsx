@@ -2,7 +2,7 @@
 import { useContext, useState } from 'react';
 import { useRef } from 'react';
 import { useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import toast, { Toaster } from "react-hot-toast"
 
@@ -34,6 +34,7 @@ export const Navbar = () => {
             console.log(error);
         }
     }
+    const location = useLocation()
     return (
         <nav className="flex items-center justify-between bg-[#393E46] px-4 py-2 text-white">
             <Toaster position="top-center" toastOptions={{ duration: 4000 }} reverseOrder={false}></Toaster>

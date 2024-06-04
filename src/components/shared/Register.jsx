@@ -1,20 +1,85 @@
 import { useContext } from "react"
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 import { AuthContext } from "../../context/AuthContext"
 import toast, { Toaster } from "react-hot-toast"
 
 function Register() {
-    const { signInWithGoogle } = useContext(AuthContext)
-
+    const { user, signInWithGoogle, signInWithFacebook, registerWithEmailPass } = useContext(AuthContext)
+    console.log(user);
+    const navigate = useNavigate()
     const googleLoginHandler = async () => {
 
         try {
             const res = await signInWithGoogle()
-            toast.success("Register successful")
+            const userInfo = res?.user
+
+            const userInfoToSaveInDb = {
+                displayName: userInfo?.displayName,
+                email: userInfo?.email,
+                photoURL: userInfo?.photoURL
+            }
+
+            fetch(`http://localhost:3000/signup`, {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify(userInfoToSaveInDb)
+            }).then(res => res.json())
+                .then(res => {
+                    toast.success("Registration succesful")
+                    navigate("/")
+                })
 
         } catch (error) {
             console.log(error);
         }
+    }
+
+    const handleFacebookLogin = async () => {
+        try {
+            const res = await signInWithFacebook()
+            toast.success("Facebook login successful")
+        } catch (error) {
+            toast.error(`${error.message}`)
+            console.log(error);
+        }
+    }
+
+    const handleEmailPasswordRegitration = async (e) => {
+        e.preventDefault()
+
+        try {
+            const form = e.target
+            const email = form.email.value
+            const password = form.password.value
+            const displayName = form.username.value
+            if (!email || !displayName || !password) {
+                toast.error("Input can not be empty")
+            }
+            const user = { email, displayName, photoURL: "" }
+            const res = await registerWithEmailPass(email, password)
+            fetch(`http://localhost:3000/signup`, {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify(user)
+            }).then(res => res.json())
+                .then(res => {
+                    toast.success("Registration with email-pass succesful")
+                    form.reset()
+                    navigate("/")
+                })
+
+
+
+            console.log({ email, displayName, password });
+        } catch (error) {
+            toast.error(`${error.message}`)
+        }
+
+
     }
 
     return <>
@@ -24,15 +89,16 @@ function Register() {
                 <div className="w-full sm:w-1/2 mb-8 sm:mb-0">
                     {/* Left side form */}
                     <h2 className="text-2xl font-bold mb-6">Register</h2>
-                    <form>
+                    <form onSubmit={handleEmailPasswordRegitration}>
                         <div className="flex flex-col space-y-4 mb-4">
-                            <input className="flex h-10 w-full rounded-md border px-3 py-2 text-sm focus:outline-none" placeholder="Username" type="text" />
-                            <input className="flex h-10 w-full rounded-md border px-3 py-2 text-sm focus:outline-none" placeholder="Email" type="text" />
-                            <input className="flex h-10 w-full rounded-md border px-3 py-2 text-sm focus:outline-none" placeholder="Password" type="password" />
+                            <input required className="flex h-10 w-full rounded-md border px-3 py-2 text-sm focus:outline-none" name="username" placeholder="Username" type="text" />
+                            <input required className="flex h-10 w-full rounded-md border px-3 py-2 text-sm focus:outline-none" name="email" placeholder="Email" type="text" />
+                            <input required className="flex h-10 w-full rounded-md border px-3 py-2 text-sm focus:outline-none" name="password" placeholder="Password" type="password" />
+                            <input type="submit" value="REGISTER" className="inline-flex items-center justify-center rounded-md text-sm font-medium  h-10 px-4 py-2 w-full bg-red-600 text-white cursor-pointer" />
                         </div>
-                        <button className="inline-flex items-center justify-center rounded-md text-sm font-medium  h-10 px-4 py-2 w-full bg-red-600 text-white">
+                        {/* <button className="inline-flex items-center justify-center rounded-md text-sm font-medium  h-10 px-4 py-2 w-full bg-red-600 text-white">
                             <NavLink to="/register">REGISTER</NavLink>
-                        </button>
+                        </button> */}
                     </form>
                 </div>
                 {/* Right side content */}
@@ -44,8 +110,8 @@ function Register() {
                         <NavLink to="/login">Already a user ? Login here,</NavLink>
                     </button>
                     <p className="text-center my-4">OR</p>
-                    <button className="inline-flex items-center justify-center rounded-md text-sm font-medium  h-10 px-4 py-2 w-full mb-2 bg-blue-600 text-white">
-                        REGISTER IN WITH GITHUB
+                    <button onClick={handleFacebookLogin} className="inline-flex items-center justify-center rounded-md text-sm font-medium  h-10 px-4 py-2 w-full mb-2 bg-blue-600 text-white">
+                        REGISTER IN WITH FACEBOOK
                     </button>
                     <button onClick={googleLoginHandler} className="inline-flex items-center justify-center rounded-md text-sm font-medium  h-10 px-4 py-2 w-full bg-blue-500 text-white">
                         REGISTER WITH GOOGLE
