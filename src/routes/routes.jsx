@@ -52,7 +52,8 @@ const routes = createBrowserRouter([
             },
             {
                 path: "/order/edit/:id",
-                element: <PrivateRoute><Edit_order></Edit_order></PrivateRoute>
+                element: <PrivateRoute><Edit_order></Edit_order></PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:3000/order/${params?.id}`)
             }
 
         ]
