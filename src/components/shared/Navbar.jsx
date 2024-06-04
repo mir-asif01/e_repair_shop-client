@@ -23,7 +23,7 @@ export const Navbar = () => {
     }, []);
 
     return (
-        <nav className="flex items-center justify-between bg-[#393E46] px-4 py-2 text-white mb-24">
+        <nav className="flex items-center justify-between bg-[#393E46] px-4 py-2 text-white">
             <div className="scale-100 cursor-pointer rounded-2xl px-3 py-2 text-xl font-semibold text-white transition-all duration-200 hover:scale-110">
                 <h2>Logo</h2>
             </div>
@@ -33,15 +33,23 @@ export const Navbar = () => {
                     <span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
                 </li>
                 <li className="group flex  cursor-pointer flex-col">
+                    <NavLink to="/add-order">Add Order</NavLink>
+                    <span className="mt-[2px] h-[3px]  w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
+                </li>
+                <li className="group flex  cursor-pointer flex-col">
+                    <NavLink to="/add-feedback">Add Feedback</NavLink>
+                    <span className="mt-[2px] h-[3px]  w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
+                </li>
+                <li className="group flex  cursor-pointer flex-col">
+                    <button>Logout</button>
+                    <span className="mt-[2px] h-[3px]  w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
+                </li>
+                <li className="group flex  cursor-pointer flex-col">
                     <NavLink to="/login">Login</NavLink>
                     <span className="mt-[2px] h-[3px]  w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
                 </li>
                 <li className="group flex  cursor-pointer flex-col">
                     <NavLink to="/register">Register</NavLink>
-                    <span className="mt-[2px] h-[3px]  w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
-                </li>
-                <li className="group flex  cursor-pointer flex-col">
-                    <NavLink to="/about">About</NavLink>
                     <span className="mt-[2px] h-[3px]  w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
                 </li>
                 <li className="group flex  cursor-pointer flex-col">
@@ -63,7 +71,10 @@ export const Navbar = () => {
                             <NavLink to="/register">Register</NavLink>
                         </li>
                         <li className="cursor-pointer  px-6 py-2 text-white hover:bg-sky-600 ">
-                            <NavLink to="/about">About</NavLink>
+                            <NavLink to="/add-order">Add Order</NavLink>
+                        </li>
+                        <li className="cursor-pointer  px-6 py-2 text-white hover:bg-sky-600 ">
+                            <NavLink to="/add-feedback">Add Feedback</NavLink>
                         </li>
                         <li className="cursor-pointer  px-6 py-2 text-white hover:bg-sky-600 ">
                             <NavLink className="bg-emerald-500 px-2 py-1 rounded-md " to="/dashboard">Dashboard</NavLink>

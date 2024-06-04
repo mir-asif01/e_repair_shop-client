@@ -8,7 +8,8 @@ import All_Orders from "../components/dashboard/All_Orders";
 import All_Users from "../components/dashboard/All_Users";
 import Home from "../components/main/Home";
 import Dashboard_Home from "../components/dashboard/Dashboard_Home";
-import About from "../components/main/About";
+import Add_Order from "../components/main/Add_Order";
+import Add_Feedback from "../components/main/Add_Feedback";
 
 
 const routes = createBrowserRouter([
@@ -29,8 +30,12 @@ const routes = createBrowserRouter([
                 element: <Login></Login>
             },
             {
-                path: "/about",
-                element: <About></About>
+                path: "/add-order",
+                element: <Add_Order></Add_Order>
+            },
+            {
+                path: "/add-feedback",
+                element: <Add_Feedback></Add_Feedback>
             }
 
         ]
