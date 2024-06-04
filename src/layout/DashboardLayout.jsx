@@ -11,7 +11,7 @@ function DashboardLayout() {
     };
 
     return <>
-        <div className="flex min-h-screen bg-gray-100">
+        <div className="flex min-h-screen overflow-x-scroll bg-gray-100">
             <div className="flex">
                 <button
                     className="p-4 md:hidden text-gray-500 focus:outline-none"
@@ -33,7 +33,7 @@ function DashboardLayout() {
                     </svg>
                 </button>
                 <div
-                    className={`inset-y-0 left-0 w-64 bg-gray-800 text-white transform ${isOpen ? 'translate-x-0' : '-translate-x-full'
+                    className={`fixed inset-y-0 left-0 w-64 bg-gray-800 text-white transform ${isOpen ? 'translate-x-0' : '-translate-x-full'
                         } md:relative md:translate-x-0 transition-transform duration-300 ease-in-out`}
                 >
                     <div className="p-4 flex justify-between items-center">
@@ -65,7 +65,7 @@ function DashboardLayout() {
                     </nav>
                 </div>
                 <div
-                    className={`fixed inset-0 bg-black opacity-50 ${isOpen ? 'block' : 'hidden'
+                    className={`fixed bg-black opacity-50 ${isOpen ? 'block' : 'hidden'
                         } md:hidden`}
                     onClick={toggleSidebar}
                 ></div>
