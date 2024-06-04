@@ -11,7 +11,7 @@ function DashboardLayout() {
     };
 
     return <>
-        <div className="flex h-screen bg-gray-100">
+        <div className="flex min-h-screen bg-gray-100">
             <div className="flex">
                 <button
                     className="p-4 md:hidden text-gray-500 focus:outline-none"
@@ -33,7 +33,7 @@ function DashboardLayout() {
                     </svg>
                 </button>
                 <div
-                    className={`fixed inset-y-0 left-0 w-64 bg-gray-800 text-white transform ${isOpen ? 'translate-x-0' : '-translate-x-full'
+                    className={`inset-y-0 left-0 w-64 bg-gray-800 text-white transform ${isOpen ? 'translate-x-0' : '-translate-x-full'
                         } md:relative md:translate-x-0 transition-transform duration-300 ease-in-out`}
                 >
                     <div className="p-4 flex justify-between items-center">
@@ -59,7 +59,6 @@ function DashboardLayout() {
                         </button>
                     </div>
                     <nav className="mt-5">
-                        <NavLink className="block py-2.5 px-4 hover:bg-gray-700" to="all-services">All Services</NavLink>
                         <NavLink className="block py-2.5 px-4 hover:bg-gray-700" to="all-orders">All Orders</NavLink>
                         <NavLink className="block py-2.5 px-4 hover:bg-gray-700" to="all-users">All Users</NavLink>
                         <NavLink className="block py-2.5 px-4 hover:bg-gray-700" to="/">Homepage</NavLink>
