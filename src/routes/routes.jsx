@@ -10,6 +10,7 @@ import Home from "../components/main/Home";
 import Dashboard_Home from "../components/dashboard/Dashboard_Home";
 import Add_Order from "../components/main/Add_Order";
 import Add_Feedback from "../components/main/Add_Feedback";
+import Profile from "../components/main/Profile";
 
 
 const routes = createBrowserRouter([
@@ -36,6 +37,10 @@ const routes = createBrowserRouter([
             {
                 path: "/add-feedback",
                 element: <Add_Feedback></Add_Feedback>
+            },
+            {
+                path: "/profile",
+                element: <Profile></Profile>
             }
 
         ]
