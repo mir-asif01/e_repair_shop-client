@@ -12,6 +12,8 @@ import Add_Order from "../components/main/Add_Order";
 import Add_Feedback from "../components/main/Add_Feedback";
 import Profile from "../components/main/Profile";
 import PrivateRoute from "./PrivateRoute";
+import Edit_profile from "../components/main/profile_components/Edit_profile";
+import Edit_order from "../components/main/order/Edit_order";
 
 
 const routes = createBrowserRouter([
@@ -42,6 +44,15 @@ const routes = createBrowserRouter([
             {
                 path: "/profile",
                 element: <PrivateRoute><Profile></Profile></PrivateRoute>
+            },
+            {
+                path: "/profile/edit/:id",
+                element: <PrivateRoute><Edit_profile></Edit_profile></PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:3000/users/${params.id}`)
+            },
+            {
+                path: "/order/edit/:id",
+                element: <PrivateRoute><Edit_order></Edit_order></PrivateRoute>
             }
 
         ]

@@ -90,21 +90,41 @@ export const Navbar = () => {
                         <li className="cursor-pointer  px-6 py-2 text-white rounded-t-lg hover:bg-sky-600 ">
                             <NavLink to="/">Home</NavLink>
                         </li>
-                        <li className="cursor-pointer  px-6 py-2 text-white hover:bg-sky-600 ">
-                            <NavLink to="/login">Login</NavLink>
-                        </li>
-                        <li className="cursor-pointer  px-6 py-2 text-white hover:bg-sky-600 ">
-                            <NavLink to="/register">Register</NavLink>
-                        </li>
-                        <li className="cursor-pointer  px-6 py-2 text-white hover:bg-sky-600 ">
-                            <NavLink to="/add-order">Add Order</NavLink>
-                        </li>
-                        <li className="cursor-pointer  px-6 py-2 text-white hover:bg-sky-600 ">
-                            <NavLink to="/add-feedback">Add Feedback</NavLink>
-                        </li>
-                        <li className="cursor-pointer  px-6 py-2 text-white hover:bg-sky-600 ">
-                            <NavLink className="bg-emerald-500 px-2 py-1 rounded-md " to="/dashboard">Dashboard</NavLink>
-                        </li>
+                        {
+                            user?.email
+                                ? <>
+                                    <li className="cursor-pointer  px-6 py-2 text-white hover:bg-sky-600 ">
+                                        <NavLink to="/add-order">Add Order</NavLink>
+                                        <span className="mt-[2px] h-[3px]  w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
+                                    </li>
+                                    <li className="cursor-pointer  px-6 py-2 text-white hover:bg-sky-600 ">
+                                        <NavLink to="/add-feedback">Add Feedback</NavLink>
+                                        <span className="mt-[2px] h-[3px]  w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
+                                    </li>
+                                    <li className="cursor-pointer  px-6 py-2 text-white hover:bg-sky-600 ">
+                                        <NavLink to="/profile">Profile</NavLink>
+                                        <span className="mt-[2px] h-[3px]  w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
+                                    </li>
+                                    <li className="cursor-pointer  px-6 py-2 text-white hover:bg-sky-600 ">
+                                        <button onClick={handleLogOut}>Logout</button>
+                                        <span className="mt-[2px] h-[3px]  w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
+                                    </li>
+                                    <li className="cursor-pointer  px-6 py-2 text-white hover:bg-sky-600 ">
+                                        <NavLink className="bg-emerald-500 px-2 py-1 rounded-md " to="/dashboard">Dashboard</NavLink>
+                                        <span className="mt-[2px] h-[3px]  w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
+                                    </li>
+                                </>
+                                : <>
+                                    <li className="cursor-pointer  px-6 py-2 text-white hover:bg-sky-600 ">
+                                        <NavLink to="/login">Login</NavLink>
+                                        <span className="mt-[2px] h-[3px]  w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
+                                    </li>
+                                    <li className="cursor-pointer  px-6 py-2 text-white hover:bg-sky-600 ">
+                                        <NavLink to="/register">Register</NavLink>
+                                        <span className="mt-[2px] h-[3px]  w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
+                                    </li>
+                                </>
+                        }
                     </ul>
                 )}
             </div>
