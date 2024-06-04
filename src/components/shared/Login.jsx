@@ -5,7 +5,7 @@ import toast, { Toaster } from "react-hot-toast"
 
 function Login() {
 
-    const { signInWithGoogle } = useContext(AuthContext)
+    const { signInWithGoogle, signInWithFacebook } = useContext(AuthContext)
 
     const handleGooleLogin = async () => {
         try {
@@ -15,7 +15,15 @@ function Login() {
             console.log(error);
         }
     }
-
+    const handleFacebookLogin = async () => {
+        try {
+            const res = await signInWithFacebook()
+            toast.success("Facebook login successful")
+        } catch (error) {
+            toast.error(`${error.message}`)
+            console.log(error);
+        }
+    }
     return <>
         <div className="max-w-[800px] mx-auto my-12 p-6 bg-white shadow-md sm:px-8 sm:py-10 lg:px-12 lg:py-16">
             <Toaster position="top-center" toastOptions={{ duration: 4000 }} reverseOrder={false}></Toaster>
@@ -42,8 +50,8 @@ function Login() {
                         <NavLink to="/register">REGISTER</NavLink>
                     </button>
                     <p className="text-center my-4">OR</p>
-                    <button className="inline-flex items-center justify-center rounded-md text-sm font-medium  h-10 px-4 py-2 w-full mb-2 bg-blue-600 text-white">
-                        LOGIN WITH GITHUB
+                    <button onClick={handleFacebookLogin} className="inline-flex items-center justify-center rounded-md text-sm font-medium  h-10 px-4 py-2 w-full mb-2 bg-blue-600 text-white">
+                        LOGIN WITH FACEBOOK
                     </button>
                     <button onClick={handleGooleLogin} className="inline-flex items-center justify-center rounded-md text-sm font-medium  h-10 px-4 py-2 w-full bg-blue-500 text-white">
                         LOGIN WITH GOOGLE

@@ -23,11 +23,11 @@ export const Navbar = () => {
             document.removeEventListener('mousedown', closeDropDown);
         };
     }, []);
-    const { signOutWithGoogle, setUser, user } = useContext(AuthContext)
+    const { logOut, setUser, user } = useContext(AuthContext)
 
     const handleLogOut = async () => {
         try {
-            const res = await signOutWithGoogle()
+            const res = await logOut()
             toast.success("Logout successful")
             setUser(null)
         } catch (error) {
