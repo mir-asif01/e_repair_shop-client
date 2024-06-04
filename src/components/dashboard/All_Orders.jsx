@@ -3,6 +3,7 @@ import toast, { Toaster } from 'react-hot-toast'
 
 function All_Orders() {
     const [orders, setOrders] = useState([])
+    const [name, setName] = useState()
     useEffect(() => {
         async function getAllOrders() {
             try {
@@ -35,10 +36,21 @@ function All_Orders() {
         }
     }
 
+    const handleSearch = () => {
+        if (!name) return
+        setOrders(orders.filter(od => od?.orderName === name))
+    }
     console.log(orders);
     return <>
         <Toaster position='top-center' reverseOrder={false} toastOptions={{ duration: 40000 }}></Toaster>
         <div className="overflow-x-auto ">
+            <div className="relative w-max rounded-lg">
+                <input onChange={(e) => {
+                    e.preventDefault()
+                    setName(e.target.value)
+                }} className="peer rounded-lg border border-gray-400 bg-transparent px-4 py-2  focus:outline-none" type="text" placeholder="Search by order name__" />
+                <button onClick={handleSearch} className="bg-green-500 px-5 py-2 mx-1 rounded-md text-white">Search</button>
+            </div>
             <table className="min-w-[90%] shadow-md  border mx-auto border-gray-100  my-6">
                 <thead>
                     <tr className="bg-[#333333] text-white">
@@ -50,13 +62,14 @@ function All_Orders() {
                 </thead>
                 <tbody>
                     {
-                        orders.map(od => <tr key={od._id} className="hover:bg-gray-50 transition duration-300">
-                            <td className="py-4 px-6 border-b">{od?.orderName}</td>
-                            <td className="py-4 px-6 border-b">{od?.orderEmail}</td>
-                            <td className="py-4 px-6 border-b text-end">
-                                <button className="bg-red-500 px-2 py-1 rounded-md text-white" onClick={() => handleDelete(od?._id)}>Delete</button>
-                            </td>
-                        </tr>)
+                        orders.length === 0 ? <><h1 className="text-red-500">No results found</h1></>
+                            : orders.map(od => <tr key={od._id} className="hover:bg-gray-50 transition duration-300">
+                                <td className="py-4 px-6 border-b">{od?.orderName}</td>
+                                <td className="py-4 px-6 border-b">{od?.orderEmail}</td>
+                                <td className="py-4 px-6 border-b text-end">
+                                    <button className="bg-red-500 px-2 py-1 rounded-md text-white" onClick={() => handleDelete(od?._id)}>Delete</button>
+                                </td>
+                            </tr>)
                     }
                 </tbody>
             </table>
