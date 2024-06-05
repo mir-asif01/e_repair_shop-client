@@ -18,7 +18,7 @@ function Add_Order() {
                 productName
             }
             console.log(order);
-            fetch(`http://localhost:3000/add-order`, {
+            fetch(`https://e-repair-shop-server.vercel.app/add-order`, {
                 method: "POST",
                 headers: {
                     "content-type": "application/json",

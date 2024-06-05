@@ -8,7 +8,7 @@ function All_Users() {
     useEffect(() => {
         async function getAllUsers() {
             try {
-                await fetch("http://localhost:3000/users")
+                await fetch("https://e-repair-shop-server.vercel.app/users")
                     .then(res => res.json())
                     .then(res => setUsers(res))
             } catch (error) {

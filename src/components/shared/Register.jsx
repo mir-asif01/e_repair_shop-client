@@ -19,7 +19,7 @@ function Register() {
                 photoURL: userInfo?.photoURL
             }
 
-            fetch(`http://localhost:3000/signup`, {
+            fetch(`https://e-repair-shop-server.vercel.app/signup`, {
                 method: "POST",
                 headers: {
                     "content-type": "application/json"
@@ -60,7 +60,7 @@ function Register() {
             }
             const user = { email, displayName, photoURL: "" }
             const res = await registerWithEmailPass(email, password)
-            fetch(`http://localhost:3000/signup`, {
+            fetch(`https://e-repair-shop-server.vercel.app/signup`, {
                 method: "POST",
                 headers: {
                     "content-type": "application/json"

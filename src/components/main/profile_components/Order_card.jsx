@@ -8,7 +8,7 @@ function Order_card({ od, orders, setOrders }) {
     const handleOrderDelete = async (id) => {
         try {
             setOrders(orders.filter(od => od._id !== id))
-            await fetch(`http://localhost:3000/delete-order/${id}`, {
+            await fetch(`https://e-repair-shop-server.vercel.app/delete-order/${id}`, {
                 method: "DELETE",
                 headers: {
                     "content-type": "application/json",

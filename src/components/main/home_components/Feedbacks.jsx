@@ -17,7 +17,7 @@ function Feedbacks() {
     const [feedbacks, setFeedbacks] = useState([])
     useEffect(() => {
         const getAllFeedbacks = async () => {
-            await fetch("http://localhost:3000/feedbacks")
+            await fetch("https://e-repair-shop-server.vercel.app/feedbacks")
                 .then(res => res.json())
                 .then(res => setFeedbacks(res))
         }

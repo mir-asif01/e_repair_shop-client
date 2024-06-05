@@ -18,7 +18,7 @@ function Edit_profile() {
                 photoURL: updatedPhotoURL ? updatedPhotoURL : photoURL
             }
 
-            await fetch(`http://localhost:3000/users/${email}`, {
+            await fetch(`https://e-repair-shop-server.vercel.app/users/${email}`, {
                 method: "PATCH",
                 headers: {
                     "content-type": "application/json",
