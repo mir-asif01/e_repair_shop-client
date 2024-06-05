@@ -14,6 +14,7 @@ import Profile from "../components/main/Profile";
 import PrivateRoute from "./PrivateRoute";
 import Edit_profile from "../components/main/profile_components/Edit_profile";
 import Edit_order from "../components/main/order/Edit_order";
+import ErrorElement from "../components/shared/Error";
 
 
 const routes = createBrowserRouter([
@@ -54,6 +55,10 @@ const routes = createBrowserRouter([
                 path: "/order/edit/:id",
                 element: <PrivateRoute><Edit_order></Edit_order></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:3000/order/${params?.id}`)
+            },
+            {
+                path: "*",
+                element: <ErrorElement></ErrorElement>
             }
 
         ]
@@ -61,6 +66,7 @@ const routes = createBrowserRouter([
     {
         path: "dashboard",
         element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        errorElement: <Error></Error>,
         children: [
             {
                 path: "/dashboard",
@@ -77,7 +83,12 @@ const routes = createBrowserRouter([
             {
                 path: "all-users",
                 element: <All_Users></All_Users>
+            },
+            {
+                path: "*",
+                element: <ErrorElement></ErrorElement>
             }
+
         ]
     }
 ])
