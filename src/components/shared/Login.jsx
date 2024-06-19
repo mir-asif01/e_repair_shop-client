@@ -10,8 +10,27 @@ function Login() {
     const handleGooleLogin = async () => {
         try {
             const res = await signInWithGoogle()
-            toast.success("Login Successful")
-            navigate("/")
+            const userInfo = res?.user
+
+            const userInfoToSaveInDb = {
+                displayName: userInfo?.displayName,
+                email: userInfo?.email,
+                photoURL: userInfo?.photoURL
+            }
+
+            fetch(`http://localhost:3000/signup`, {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify(userInfoToSaveInDb)
+            }).then(res => res.json())
+                .then(res => {
+                    toast.success("Login Successful")
+                    localStorage.setItem("token", res?.token)
+                    navigate("/")
+                })
+
         } catch (error) {
             console.log(error);
         }
@@ -19,8 +38,26 @@ function Login() {
     const handleFacebookLogin = async () => {
         try {
             const res = await signInWithFacebook()
-            toast.success("Facebook login successful")
-            navigate("/")
+            const userInfo = res?.user
+
+            const userInfoToSaveInDb = {
+                displayName: userInfo?.displayName,
+                email: userInfo?.email,
+                photoURL: userInfo?.photoURL
+            }
+
+            fetch(`http://localhost:3000/signup`, {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify(userInfoToSaveInDb)
+            }).then(res => res.json())
+                .then(res => {
+                    toast.success("Facebook login successful")
+                    localStorage.setItem("token", res?.token)
+                    navigate("/")
+                })
         } catch (error) {
             toast.error(`${error.message}`)
             console.log(error);

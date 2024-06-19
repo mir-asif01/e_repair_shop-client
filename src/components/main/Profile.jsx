@@ -12,7 +12,7 @@ function Profile() {
     useEffect(() => {
         async function getUserInfoFromDB() {
             try {
-                fetch(`http://localhost:3000/user-info?email=${user?.email}`)
+                await fetch(`http://localhost:3000/user-info?email=${user?.email}`)
                     .then(res => res.json())
                     .then(res => setUserInfo(res))
             } catch (error) {

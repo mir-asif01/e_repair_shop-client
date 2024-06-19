@@ -40,7 +40,27 @@ function Register() {
     const handleFacebookLogin = async () => {
         try {
             const res = await signInWithFacebook()
-            toast.success("Facebook login successful")
+            const userInfo = res?.user
+
+            const userInfoToSaveInDb = {
+                displayName: userInfo?.displayName,
+                email: userInfo?.email,
+                photoURL: userInfo?.photoURL
+            }
+
+            fetch(`http://localhost:3000/signup`, {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify(userInfoToSaveInDb)
+            }).then(res => res.json())
+                .then(res => {
+                    toast.success("Facebook login successful")
+                    localStorage.setItem("token", res?.token)
+                    navigate("/")
+                })
+
         } catch (error) {
             toast.error(`${error.message}`)
             console.log(error);
