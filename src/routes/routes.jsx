@@ -49,12 +49,12 @@ const routes = createBrowserRouter([
             {
                 path: "/profile/edit/:id",
                 element: <PrivateRoute><Edit_profile></Edit_profile></PrivateRoute>,
-                loader: ({ params }) => fetch(`https://e-repair-shop-server.vercel.app/users/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:3000/users/${params.id}`)
             },
             {
                 path: "/order/edit/:id",
                 element: <PrivateRoute><Edit_order></Edit_order></PrivateRoute>,
-                loader: ({ params }) => fetch(`https://e-repair-shop-server.vercel.app/order/${params?.id}`)
+                loader: ({ params }) => fetch(`http://localhost:3000/order/${params?.id}`)
             },
             {
                 path: "*",

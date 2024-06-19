@@ -7,7 +7,7 @@ function All_Orders() {
     useEffect(() => {
         async function getAllOrders() {
             try {
-                await fetch("https://e-repair-shop-server.vercel.app/orders")
+                await fetch("http://localhost:3000/orders")
                     .then(res => res.json())
                     .then(res => setOrders(res))
             } catch (error) {
@@ -21,7 +21,7 @@ function All_Orders() {
         setOrders(orders.filter(od => od._id !== id))
         try {
             setOrders(orders.filter(od => od._id !== id))
-            await fetch(`https://e-repair-shop-server.vercel.app/delete-order/${id}`, {
+            await fetch(`http://localhost:3000/delete-order/${id}`, {
                 method: "DELETE",
                 headers: {
                     "content-type": "application/json",
