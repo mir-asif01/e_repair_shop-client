@@ -5,10 +5,9 @@ import toast, { Toaster } from "react-hot-toast"
 
 function Register() {
     const { user, signInWithGoogle, signInWithFacebook, registerWithEmailPass } = useContext(AuthContext)
-    console.log(user);
     const navigate = useNavigate()
-    const googleLoginHandler = async () => {
 
+    const googleLoginHandler = async () => {
         try {
             const res = await signInWithGoogle()
             const userInfo = res?.user
@@ -90,7 +89,7 @@ function Register() {
                 .then(res => {
                     toast.success("Registration with email-pass succesful")
                     form.reset()
-                    // localStorage.setItem("token", res?.token)
+                    localStorage.setItem("token", res?.token)
                     navigate("/")
                 })
 

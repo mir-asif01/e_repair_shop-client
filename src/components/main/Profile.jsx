@@ -9,6 +9,8 @@ function Profile() {
     const [orders, setOrders] = useState([])
     const [userInfo, setUserInfo] = useState({})
 
+    const token = localStorage.getItem("token")
+
     useEffect(() => {
         async function getUserInfoFromDB() {
             try {
@@ -25,7 +27,12 @@ function Profile() {
     useEffect(() => {
         const getAllOrders = async () => {
             try {
-                fetch(`http://localhost:3000/users-orders?email=${user?.email}`)
+                fetch(`http://localhost:3000/users-orders?email=${user?.email}`, {
+                    headers: {
+                        "content-type": "application/json",
+                        authorization: `Bearer ${token}`,
+                    }
+                })
                     .then(res => res.json())
                     .then(res => setOrders(res))
             } catch (error) {
