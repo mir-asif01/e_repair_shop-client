@@ -7,7 +7,7 @@ https://recipe-app-4be44.web.app/
 https://github.com/mir-asif01/e_repair-shop_server
 
 # Technologies Used
-`ReactJs` `TailwindCSS` `Firebase` `react-router-dom` `ExpressJs` `NodeJs` `MongoDB` `Mongoose(ODM)`
+`ReactJs` `TailwindCSS` `Firebase` `react-router-dom` `ExpressJs` `NodeJs` `MongoDB` `Mongoose(ODM)` `json-web-token`
 # Project Description
   ## (public routes)
   - Home (This is the landing page where users can see website related informations. There is a section where user can see feedbacks.)
