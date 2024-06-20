@@ -39,9 +39,9 @@ export const Navbar = () => {
         <nav className="flex items-center justify-between bg-[#393E46] px-4 py-2 text-white">
             <Toaster position="top-center" toastOptions={{ duration: 4000 }} reverseOrder={false}></Toaster>
             <div className="scale-100 cursor-pointer rounded-2xl px-3 py-2 text-xl font-semibold text-white transition-all duration-200 hover:scale-110">
-                <h2>e_repair</h2>
+                <h2 className='text-2xl'>e_repair</h2>
             </div>
-            <ul className="hidden items-center justify-between gap-10 md:flex">
+            <ul className="hidden items-center justify-between gap-10 md:flex text-lg">
                 <li className="group flex  cursor-pointer flex-col">
                     <NavLink to="/">Home</NavLink>
                     <span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-sky-500 transition-all duration-300 group-hover:w-full"></span>

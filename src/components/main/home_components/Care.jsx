@@ -42,7 +42,9 @@ function Care() {
                 <div className="relative p-8  border border-gray-200 rounded-2xl shadow-sm flex flex-col">
                     <div className="flex-1">
                         <h3 className="text-xl font-semibold ">Pro</h3>
-
+                        <p
+                            className="absolute top-0 py-1.5 px-4 bg-red-500 text-white rounded-full text-xs font-semibold uppercase tracking-wide  transform -translate-y-1/2">
+                            Coming Soon</p>
                         <p className="mt-4 flex items-baseline ">
                             <span className="text-5xl font-extrabold tracking-tight">$12</span><span class="ml-1 text-xl font-semibold">/month</span>
                         </p>
@@ -74,8 +76,11 @@ function Care() {
                                 <polyline points="20 6 9 17 4 12"></polyline>
                             </svg><span class="ml-3 ">Analytics on the quizz</span></li>
                         </ul>
-                    </div><NavLink
-                        className="bg-emerald-500 text-white  hover:bg-emerald-600 mt-8 block w-full py-3 px-6 border border-transparent rounded-md text-center font-medium">Order Now</NavLink >
+                    </div>
+                    <button disabled={true}
+                        className="bg-slate-600 text-white mt-8 block w-full py-3 px-6 border border-transparent rounded-md text-center font-medium">
+                        Order Now
+                    </button>
                 </div>
             </div>
 

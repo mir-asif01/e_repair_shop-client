@@ -11,10 +11,10 @@ function DashboardLayout() {
     };
 
     return <>
-        <div className="flex min-h-screen overflow-x-scroll bg-gray-100">
+        <div className="flex min-h-screen bg-gray-100">
             <div className="flex">
                 <button
-                    className="p-4 md:hidden text-gray-500 focus:outline-none"
+                    className="p-4 md:hidden bg-slate-900 text-white focus:outline-none"
                     onClick={toggleSidebar}
                 >
                     <svg
@@ -37,7 +37,7 @@ function DashboardLayout() {
                         } md:relative md:translate-x-0 transition-transform duration-300 ease-in-out`}
                 >
                     <div className="p-4 flex justify-between items-center">
-                        <h1 className="text-2xl font-bold">Dashboard</h1>
+                        <NavLink to={"/dashboard"} className="text-2xl font-bold">Dashboard</NavLink>
                         <button
                             className="md:hidden text-gray-500 focus:outline-none"
                             onClick={toggleSidebar}
@@ -70,7 +70,7 @@ function DashboardLayout() {
                     onClick={toggleSidebar}
                 ></div>
             </div>
-            <div className="flex-1 p-10">
+            <div className="flex-1 p-3 sm:p-10 overflow-x-scroll">
                 <Outlet></Outlet>
             </div>
         </div>

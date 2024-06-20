@@ -9,8 +9,8 @@ function Home() {
         <Banner></Banner>
         <Fast_delivery></Fast_delivery>
         <Care></Care>
-        <Best_works></Best_works>
         <Feedbacks></Feedbacks>
+        <Best_works></Best_works>
         <Faq></Faq>
     </>
 }
