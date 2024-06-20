@@ -17,7 +17,7 @@ function Edit_order() {
                 orderDesc: updatedOrderDesc ? updatedOrderDesc : orderDesc
             }
 
-            await fetch(`http://localhost:3000/order/edit/${_id}`, {
+            await fetch(`https://e-repair-shop-server.vercel.app/order/edit/${_id}`, {
                 method: "PATCH",
                 headers: {
                     "content-type": "application/json",

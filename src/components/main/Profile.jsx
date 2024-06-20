@@ -14,7 +14,7 @@ function Profile() {
     useEffect(() => {
         async function getUserInfoFromDB() {
             try {
-                await fetch(`http://localhost:3000/user-info?email=${user?.email}`)
+                await fetch(`https://e-repair-shop-server.vercel.app/user-info?email=${user?.email}`)
                     .then(res => res.json())
                     .then(res => setUserInfo(res))
             } catch (error) {
@@ -27,7 +27,7 @@ function Profile() {
     useEffect(() => {
         const getAllOrders = async () => {
             try {
-                fetch(`http://localhost:3000/users-orders?email=${user?.email}`, {
+                fetch(`https://e-repair-shop-server.vercel.app/users-orders?email=${user?.email}`, {
                     headers: {
                         "content-type": "application/json",
                         authorization: `Bearer ${token}`,

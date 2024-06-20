@@ -18,7 +18,7 @@ function Login() {
                 photoURL: userInfo?.photoURL
             }
 
-            fetch(`http://localhost:3000/signup`, {
+            fetch(`https://e-repair-shop-server.vercel.app/signup`, {
                 method: "POST",
                 headers: {
                     "content-type": "application/json"
@@ -46,7 +46,7 @@ function Login() {
                 photoURL: userInfo?.photoURL
             }
 
-            fetch(`http://localhost:3000/signup`, {
+            fetch(`https://e-repair-shop-server.vercel.app/signup`, {
                 method: "POST",
                 headers: {
                     "content-type": "application/json"

@@ -22,7 +22,7 @@ function Add_Feedback() {
                 userEmail,
                 comment
             }
-            await fetch("http://localhost:3000/add-feedback", {
+            await fetch("https://e-repair-shop-server.vercel.app/add-feedback", {
                 method: "POST",
                 headers: {
                     "content-type": "application/json",
